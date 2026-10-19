@@ -1,0 +1,18 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex"><title>Histoire de France Studio – TikTok</title><link rel="stylesheet" href="../style.css"></head><body>
+<h1>Histoire de France Studio</h1>
+<p>Outil interne de la page Histoire de France : il publie nos propres vidéos d'histoire sur notre compte TikTok, grâce à Login Kit et à l'API Content Posting de TikTok.</p>
+<div id="retour"></div>
+<script>
+const p = new URLSearchParams(location.search);
+const z = document.getElementById('retour');
+if (p.get('code')) {
+  z.innerHTML = '<h2>Compte TikTok connecté</h2><p>Autorisation reçue. Code à transmettre à l\'outil de publication :</p><pre id="c"></pre>';
+  document.getElementById('c').textContent = p.get('code');
+} else if (p.get('error')) {
+  z.innerHTML = '<h2>Autorisation refusée</h2><p id="e"></p>';
+  document.getElementById('e').textContent = p.get('error_description') || p.get('error');
+}
+</script>
+<footer><a href="../confidentialite.html">Politique de confidentialité</a> · <a href="../conditions.html">Conditions d'utilisation</a></footer>
+</body></html>
