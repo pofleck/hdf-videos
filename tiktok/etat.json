@@ -1,10 +1,16 @@
 {
- "maj": "2026-10-19T12:47+02:00",
+ "maj": "2026-10-19T12:49+02:00",
  "compte": {
   "nom": "Histoire de France",
-  "photo": "https://p16-common-sign.tiktokcdn-eu.com/tos-no1a-avt-0068c001-no/a1122544717b05cff4de7ec11730859d~tplv-tiktokx-cropcenter:168:168.jpeg?dr=10397&refresh_token=f70ca297&x-expires=1792576800&x-signature=hEszQ13PMC%2FVddD1dCsq4OtPjDw%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=8aecc5ac&idc=no1a"
+  "photo": "https://p19-common-sign.tiktokcdn-eu.com/tos-no1a-avt-0068c001-no/a1122544717b05cff4de7ec11730859d~tplv-tiktokx-cropcenter:168:168.jpeg?dr=10397&refresh_token=31edb423&x-expires=1792576800&x-signature=ZsHBCIiWeXR2xjWjYCq7LQOM94E%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=8aecc5ac&idc=no1a"
  },
  "videos": [
+  {
+   "titre": "🏺 Devant la mairie de Limoges se dresse une fontaine… en porcelaine. Et la porcelaine de Limoges, tout a commencé… par u",
+   "statut": "échec : TikTok 403 : {\"error\":{\"code\":\"unaudited_client_can_only_post_to_private_accounts\",\"message\":\"Please review our integration guidelines at https://deve",
+   "visibilite": null,
+   "le": "2026-10-19T12:49"
+  },
   {
    "titre": "🏺 Devant la mairie de Limoges se dresse une fontaine… en porcelaine. Et la porcelaine de Limoges, tout a commencé… par u",
    "statut": "échec : TikTok 403 : {\"error\":{\"code\":\"unaudited_client_can_only_post_to_private_accounts\",\"message\":\"Please review our integration guidelines at https://deve",
