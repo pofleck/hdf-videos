@@ -1,9 +1,21 @@
 <!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex"><title>Histoire de France Studio – TikTok</title><link rel="stylesheet" href="../style.css"></head><body>
+<meta name="robots" content="noindex"><title>Histoire de France Studio – TikTok</title><link rel="stylesheet" href="../style.css">
+<style>.bouton{display:inline-block;background:#fe2c55;color:#fff;padding:.7em 1.4em;border-radius:8px;text-decoration:none;font-weight:bold}
+.compte{display:flex;align-items:center;gap:.8em}.compte img{width:56px;height:56px;border-radius:50%}
+table{border-collapse:collapse;width:100%}td,th{border-bottom:1px solid #ddd;padding:.4em;text-align:left;font-size:.95em}</style></head><body>
 <h1>Histoire de France Studio</h1>
 <p>Outil interne de la page Histoire de France : il publie nos propres vidéos d'histoire sur notre compte TikTok, grâce à Login Kit et à l'API Content Posting de TikTok.</p>
 <div id="retour"></div>
+<h2>1. Connecter le compte TikTok</h2>
+<p><a class="bouton" id="connecter" href="#">Connecter le compte TikTok</a></p>
+<h2>2. Compte connecté et vidéos publiées</h2>
+<div id="etat"><p>Aucun compte connecté pour l'instant.</p></div>
 <script>
+const CLE = "sbawcc7jawewqf3v3b";  // client key de l'application (identifiant public)
+const RETOUR = "https://pofleck.github.io/hdf-videos/tiktok/";
+document.getElementById('connecter').href = "https://www.tiktok.com/v2/auth/authorize/?" + new URLSearchParams({
+  client_key: CLE, scope: "user.info.basic,video.upload,video.publish", response_type: "code",
+  redirect_uri: RETOUR, state: Math.random().toString(36).slice(2)});
 const p = new URLSearchParams(location.search);
 const z = document.getElementById('retour');
 if (p.get('code')) {
@@ -13,6 +25,19 @@ if (p.get('code')) {
   z.innerHTML = '<h2>Autorisation refusée</h2><p id="e"></p>';
   document.getElementById('e').textContent = p.get('error_description') || p.get('error');
 }
+fetch('etat.json?' + Date.now()).then(r => r.ok ? r.json() : null).then(e => {
+  if (!e) return;
+  const d = document.getElementById('etat'); d.innerHTML = '';
+  const c = document.createElement('div'); c.className = 'compte';
+  const i = document.createElement('img'); i.src = e.compte.photo || ''; i.alt = '';
+  const n = document.createElement('div'); n.innerHTML = '<strong></strong><br><small></small>';
+  n.querySelector('strong').textContent = e.compte.nom || ''; n.querySelector('small').textContent = 'Compte connecté (mis à jour le ' + e.maj.replace('T', ' à ') + ')';
+  c.append(i, n); d.append(c);
+  const t = document.createElement('table');
+  t.innerHTML = '<tr><th>Vidéo publiée</th><th>Statut</th><th>Visibilité</th><th>Le</th></tr>';
+  for (const v of e.videos) { const r = t.insertRow(); for (const x of [v.titre, v.statut, v.visibilite, (v.le || '').replace('T', ' ')]) r.insertCell().textContent = x || ''; }
+  d.append(t);
+});
 </script>
 <footer><a href="../confidentialite.html">Politique de confidentialité</a> · <a href="../conditions.html">Conditions d'utilisation</a></footer>
 </body></html>
